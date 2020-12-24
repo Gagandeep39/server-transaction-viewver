@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 
 
 @RestController
-@RequestMapping(value = "/api/transactionss", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/transactions", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TransactionsController {
 
     private final TransactionsService transactionsService;
