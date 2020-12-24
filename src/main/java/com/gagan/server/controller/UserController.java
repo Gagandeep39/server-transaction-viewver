@@ -1,4 +1,4 @@
-package com.gagan.server.rest;
+package com.gagan.server.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
