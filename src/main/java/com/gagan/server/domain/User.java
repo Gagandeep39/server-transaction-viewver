@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "primary_sequence")
     private Integer userid;
 
-    @Column(length = 50)
+    @Column(length = 200)
     private String password;
 
 
