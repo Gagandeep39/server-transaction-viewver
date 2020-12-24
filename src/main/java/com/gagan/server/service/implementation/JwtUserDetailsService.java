@@ -1,4 +1,4 @@
-package com.gagan.server.service;
+package com.gagan.server.service.implementation;
 
 import java.util.ArrayList;
 
