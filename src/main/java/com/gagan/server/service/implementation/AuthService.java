@@ -39,7 +39,7 @@ public class AuthService implements IAuthService {
 	@Transactional(readOnly = true)
   public User findUserByCredentials(Integer username, String password) {
     User user = userRepository.findById(username)
-        .orElseThrow(() -> new InvalidCredentialException("userid", "User " + username + " doesn't exist"));
+        .orElseThrow(() -> new InvalidCredentialException("userId", "User " + username + " doesn't exist"));
     if (!passwordEncoder.matches(password, user.getPassword())) throw new InvalidCredentialException("password", "Invalid Password");
     return user;
   }

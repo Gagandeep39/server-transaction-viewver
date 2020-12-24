@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Setter
 public class UserDTO {
 
-    private Integer userid;
+    private Integer userId;
 
     @Size(max = 50)
     private String password;

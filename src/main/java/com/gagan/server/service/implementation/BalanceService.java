@@ -37,7 +37,7 @@ public class BalanceService implements IBalanceService {
   public boolean hasBalance(Double balance) {
     return balanceRepository
       .findById(userService.fetchIdFromJwt())
-      .orElseThrow(() -> new InvalidCredentialException("userid", "Not Found User"))
+      .orElseThrow(() -> new InvalidCredentialException("userId", "Not Found User"))
       .getBalance() >= balance;
   }
 

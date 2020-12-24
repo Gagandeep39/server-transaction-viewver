@@ -17,7 +17,7 @@ public class UserService implements IUserService {
         String currentUserName = authentication.getName();
         return Integer.parseInt(currentUserName);
       }
-      else throw new InvalidCredentialException("userid", "Error Validating TOken in Balance Service");
+      else throw new InvalidCredentialException("userId", "Error Validating TOken in Balance Service");
 	}
   
 }
