@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.gagan.server.domain.Transactions;
+import com.gagan.server.exceptions.InvalidCredentialException;
 import com.gagan.server.model.TransactionsDTO;
 import com.gagan.server.repos.TransactionsRepository;
 import com.gagan.server.service.IBalanceService;
@@ -33,7 +34,7 @@ public class TransactionService implements ITransactionsService {
 	@Override
 	public TransactionsDTO createTransaction(TransactionsDTO transaction) {
 		if(!balanceService.hasBalance(transaction.getAmount()))
-			throw new RuntimeException("Insufficient Balance");
+			throw new InvalidCredentialException("balance", "Insufficient Balance");
 		balanceService.updateBalance(-transaction.getAmount());
 		balanceService.updateBalance(transaction.getReciever(), transaction.getAmount());
 		final Transactions transactions = new Transactions();

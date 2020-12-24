@@ -1,5 +1,6 @@
 package com.gagan.server.service.implementation;
 
+import com.gagan.server.exceptions.InvalidCredentialException;
 import com.gagan.server.service.IUserService;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,7 +17,7 @@ public class UserService implements IUserService {
         String currentUserName = authentication.getName();
         return Integer.parseInt(currentUserName);
       }
-      else throw new RuntimeException("Error Validating TOken in Balance Service");
+      else throw new InvalidCredentialException("userid", "Error Validating TOken in Balance Service");
 	}
   
 }

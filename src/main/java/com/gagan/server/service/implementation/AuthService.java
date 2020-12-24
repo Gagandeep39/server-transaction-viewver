@@ -1,6 +1,7 @@
 package com.gagan.server.service.implementation;
 
 import com.gagan.server.domain.User;
+import com.gagan.server.exceptions.InvalidCredentialException;
 import com.gagan.server.model.JwtRequest;
 import com.gagan.server.model.JwtResponse;
 import com.gagan.server.repos.UserRepository;
@@ -38,8 +39,8 @@ public class AuthService implements IAuthService {
 	@Transactional(readOnly = true)
   public User findUserByCredentials(Integer username, String password) {
     User user = userRepository.findById(username)
-        .orElseThrow(() -> new RuntimeException("User " + username + " doesn't exist"));
-    if (!passwordEncoder.matches(password, user.getPassword())) throw new RuntimeException("Invalid Password");
+        .orElseThrow(() -> new InvalidCredentialException("userid", "User " + username + " doesn't exist"));
+    if (!passwordEncoder.matches(password, user.getPassword())) throw new InvalidCredentialException("password", "Invalid Password");
     return user;
   }
   

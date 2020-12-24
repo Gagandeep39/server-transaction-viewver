@@ -1,7 +1,7 @@
 package com.gagan.server.service.implementation;
 
-import com.gagan.server.config.CustomNotFoundException;
 import com.gagan.server.domain.Balance;
+import com.gagan.server.exceptions.InvalidCredentialException;
 import com.gagan.server.model.BalanceDTO;
 import com.gagan.server.repos.BalanceRepository;
 import com.gagan.server.service.IBalanceService;
@@ -24,7 +24,7 @@ public class BalanceService implements IBalanceService {
 	public BalanceDTO fetchBalanceById() {
 		return balanceRepository.findById(userService.fetchIdFromJwt())
     .map(balance -> mapToDTO(balance, new BalanceDTO()))
-    .orElseThrow(CustomNotFoundException::new);
+    .orElseThrow(InvalidCredentialException::new);
 	}
 
   private BalanceDTO mapToDTO(final Balance balance, final BalanceDTO balanceDTO) {
@@ -37,7 +37,7 @@ public class BalanceService implements IBalanceService {
   public boolean hasBalance(Double balance) {
     return balanceRepository
       .findById(userService.fetchIdFromJwt())
-      .orElseThrow(() -> new RuntimeException("Not Found User"))
+      .orElseThrow(() -> new InvalidCredentialException("userid", "Not Found User"))
       .getBalance() >= balance;
   }
 
@@ -48,7 +48,7 @@ public class BalanceService implements IBalanceService {
   @Override
   public void updateBalance(Integer id, double amount) {  
     final Balance balance = balanceRepository.findById(id)
-      .orElseThrow(CustomNotFoundException::new);
+      .orElseThrow(InvalidCredentialException::new);
       log.info(amount + "");
     balance.setBalance(balance.getBalance() + amount);
     balanceRepository.save(balance);
