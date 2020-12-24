@@ -1,0 +1,17 @@
+spring:
+  aop:
+    auto: true
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: ${JDBC_DATABASE_URL:jdbc:h2:mem:server}
+    username: ${JDBC_DATABASE_USERNAME:sa}
+    password: ${JDBC_DATABASE_PASSWORD:}
+    driver-class-name: org.h2.Driver
+    platform: h2
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
