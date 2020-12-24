@@ -5,3 +5,25 @@ Content-Type: application/json
   "userId": 100001,
   "password": "123456"
 }
+
+###
+
+GET http://localhost:8080/api/balances
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAwMDEiLCJpYXQiOjE2MDg4MTc3MjUsImV4cCI6MTYwODgyMTMyNX0.KyEfdZdTByEeV0UCs0sIsf8PUw2ffViKuipwjAkQHl0
+
+### 
+
+POST http://localhost:8080/api/transactions
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAwMDEiLCJpYXQiOjE2MDg4MTc3MjUsImV4cCI6MTYwODgyMTMyNX0.KyEfdZdTByEeV0UCs0sIsf8PUw2ffViKuipwjAkQHl0
+Content-Type: application/json
+
+{
+  "sender": 100001,
+  "reciever": 100002,
+  "amount": 4000
+}
+
+### 
+
+GET http://localhost:8080/api/transactions
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDAwMDEiLCJpYXQiOjE2MDg4MTc3MjUsImV4cCI6MTYwODgyMTMyNX0.KyEfdZdTByEeV0UCs0sIsf8PUw2ffViKuipwjAkQHl0
