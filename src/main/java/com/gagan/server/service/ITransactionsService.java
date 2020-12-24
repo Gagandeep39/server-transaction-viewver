@@ -6,7 +6,7 @@ import com.gagan.server.model.TransactionsDTO;
 
 public interface ITransactionsService {
 
-  List<TransactionsDTO> fetchAllTransaction(Integer id);
+  List<TransactionsDTO> fetchAllTransaction();
   TransactionsDTO createTransaction(TransactionsDTO transaction);
 
 }
